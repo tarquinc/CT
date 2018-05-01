@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
-import { JwtModule, JwtHelperService } from '@auth0/angular-jwt'; 
+import { JwtModule } from '@auth0/angular-jwt'; 
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -14,7 +14,9 @@ import { AuthService } from './services/auth.service';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
-
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -30,8 +32,13 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     HttpClientModule,
     TooltipModule.forRoot(),
     CollapseModule.forRoot(),
-    JwtHelperService,
-    JwtModule
+ 
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:52985']
+      }
+    }),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

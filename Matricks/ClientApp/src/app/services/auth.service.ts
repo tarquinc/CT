@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import { RegisterComponent } from '../register/register.component';
-import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
-import 'rxjs/add/operator/map';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthUser } from '../models/AuthUser';
 
 @Injectable()
 export class AuthService {
@@ -20,14 +18,14 @@ export class AuthService {
 
   register(value) {
     const contentHeader = new HttpHeaders({ 'Content-type': 'application/json' });
-    return this.http.post(this.baseUrl+"register", value, {headers: contentHeader})
+    return this.http.post(this.baseUrl + "register", value);
   }
 
   login(user) {
     return this.http.post<AuthUser>(this.baseUrl + '/auth/login', user).map((result: AuthUser) => {
       if (result) {
         localStorage.setItem('token', result.tokenString);
-        localStorage.setItem('user', JSON.stringify(result.user);
+        //localStorage.setItem('user', JSON.stringify(result.user));
       }
       return result;
     });

@@ -16,7 +16,6 @@ export class RegisterComponent implements OnInit {
   //constructor() { }
 
   ngOnInit() {
-  
   }
 
   //login() {
@@ -25,8 +24,11 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(this.model);
-    this.AuthService.register(this.model).subscribe();
+    this.AuthService.register(this.model).subscribe(result => {
+      
+    });
   }
+
 }
 
 class User {
