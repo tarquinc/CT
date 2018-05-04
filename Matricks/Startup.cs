@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using MyMatrix.Data;
 
 namespace Matricks
 {
@@ -35,6 +36,7 @@ namespace Matricks
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddMvc();
+            services.AddTransient<SeedDB>();
 
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("TokenSettings:JWTKey").Value);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -53,7 +55,7 @@ namespace Matricks
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedDB seeder)
         {
             if (env.IsDevelopment())
             {
@@ -61,7 +63,7 @@ namespace Matricks
             }
 
 
-
+            seeder.SeedUsers();
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseAuthentication();
