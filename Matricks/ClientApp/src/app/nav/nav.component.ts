@@ -12,9 +12,12 @@ export class NavComponent implements OnInit {
 
   model = {};
 
-  constructor(private AuthService: AuthService) { }
+  constructor(private AuthService: AuthService) {
+    //var isCollapsed = false;
+  }
 
   ngOnInit() {
+    var isCollapsed = false;
   }
 
   login() {

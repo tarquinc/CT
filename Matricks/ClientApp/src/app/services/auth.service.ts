@@ -25,7 +25,7 @@ export class AuthService {
     return this.http.post<AuthUser>(this.baseUrl + '/auth/login', user).map((result: AuthUser) => {
       if (result) {
         localStorage.setItem('token', result.tokenString);
-        //localStorage.setItem('user', JSON.stringify(result.user));
+        localStorage.setItem('user', JSON.stringify(result.user));
       }
       return result;
     });

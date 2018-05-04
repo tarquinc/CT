@@ -29,6 +29,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  //match() {
+  //  var pass1 = this.model.confirmPassword();
+
+  //}
+
 }
 
 class User {

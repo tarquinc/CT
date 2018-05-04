@@ -85,7 +85,7 @@ namespace Matricks.Controllers
             var tokenString = tokenHandler.WriteToken(token);
 
             // Temporary return value for testing
-            return Ok(new { Token = tokenString, ID = storedUser.ID, UserName = storedUser.UserName });
+            return Ok(new { Token = tokenString, ID = storedUser.ID, UserName = storedUser.UserName, User = new { ID = storedUser.ID, UserName = storedUser.UserName } });
         }
     }
 }
