@@ -25,9 +25,10 @@ namespace Matricks.Controllers
 
         public IUserRepository _repository;
 
-        public UsersController(IUserRepository repository)
+        public UsersController(IUserRepository repository, IMapper userMap)
         {
             _repository = repository;
+            _userMap = userMap;
         }
 
         [HttpGet]
