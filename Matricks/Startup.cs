@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MyMatrix.Data;
+using AutoMapper;
 
 namespace Matricks
 {
@@ -37,6 +38,7 @@ namespace Matricks
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddMvc();
             services.AddTransient<SeedDB>();
+            
 
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("TokenSettings:JWTKey").Value);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -51,7 +53,9 @@ namespace Matricks
 
                     };
                 });
-            
+
+            services.AddAutoMapper();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
