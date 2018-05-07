@@ -32,13 +32,23 @@ namespace Matricks.Controllers
 
         [HttpGet]
         [Route("api/users/users")]
-        public async Task<IEnumerable<UserDTO>> GetAll(int id)
+        public async Task<IEnumerable<UserDTO>> GetAll()
         {
-            var allUsers = await _repository.GetUsers();
-            var info = _userMap.Map<IEnumerable<UserDTO>>(allUsers);
+            var all = await _repository.GetUsers();
+            var info = _userMap.Map<IEnumerable<UserDTO>>(all);
             return info;
         }
 
-        
+        [HttpGet]
+        [Route("/api/users/{id}")]
+        public async Task<UserDTO> GetById(int id)
+        {
+            var single = await _repository.GetUser(id);
+            var info = _userMap.Map<UserDTO>(single);
+            return info;
+
+        }
+
+
     }
 }
