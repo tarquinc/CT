@@ -31,7 +31,7 @@ namespace Matricks.Controllers
         }
 
         [HttpGet]
-        [Route("api/users/{id}")]
+        [Route("api/users/users")]
         public async Task<IEnumerable<UserDTO>> GetAll(int id)
         {
             var allUsers = await _repository.GetUsers();
