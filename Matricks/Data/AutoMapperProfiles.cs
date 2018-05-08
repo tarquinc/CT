@@ -12,8 +12,14 @@ namespace Matricks.Data
     {
         public AutoMapperProfiles()
         {
-            CreateMap<User, BriefDTO>();
-            CreateMap<User, UserDTO>();
+            CreateMap<User, BriefDTO>().ForMember(dest => dest.Url, opt =>
+            {
+                opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsProfilePic).Url);
+            });
+            CreateMap<User, UserDTO>().ForMember(dest => dest.Url, opt =>
+            {
+                opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsProfilePic).Url);
+            });
         }
     }
 }
