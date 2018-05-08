@@ -16,6 +16,7 @@ namespace Matricks.DTOs
         public byte[] PasswordSalt { get; set; }
         public string Gender { get; set; }
         public string Name { get; set; }
+        public int Age { get; set; }
         public DateTime BirthDate { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }
@@ -23,6 +24,7 @@ namespace Matricks.DTOs
         public string LookingFor { get; set; }
         public string Interests { get; set; }
         public string City { get; set; }
+        public string Url { get; set; }
         public ICollection<PhotoInfoDTO> Photos { get; set; }
     }
 }
