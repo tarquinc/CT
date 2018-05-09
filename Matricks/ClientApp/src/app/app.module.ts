@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { MemberListComponent } from './member/member-list/member-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -24,7 +25,8 @@ export function tokenGetter() {
     AppComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    MemberListComponent
   ],
   imports: [
     BrowserModule,
