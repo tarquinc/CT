@@ -11,6 +11,7 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
@@ -40,7 +41,7 @@ export function tokenGetter() {
       }
     }),
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
