@@ -3,10 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthUser } from '../models/AuthUser';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
-  baseUrl = 'http://localhost:52985/api/auth/'
+  baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private jwtHelperService: JwtHelperService) { }
   //constructor() { }
